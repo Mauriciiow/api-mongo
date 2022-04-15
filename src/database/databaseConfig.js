@@ -1,5 +1,5 @@
 const dbConnect = async (mongoose)=>{
-    await mongoose.connect('mongodb://localhost/clientes', {useNewUrlParser: true, useUnifiedTopology: true}) || mongoose.connect(process.env.MONGODB_URI)
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/clientes') 
 
     const db = mongoose.connection
     

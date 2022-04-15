@@ -1,9 +1,7 @@
-import dotenv from dotenv
-dotenv.config()
 
 const dbConnect = async (mongoose)=>{
-
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/clientes', {useNewUrlParser: true, useUnifiedTopology: true}) 
+  
+    await mongoose.connect('mongodb+srv://mauricio:Mau_ricio0-9@clientes.68k0l.mongodb.net/clientes', {useNewUrlParser: true, useUnifiedTopology: true}) 
     
 
     const db = mongoose.connection

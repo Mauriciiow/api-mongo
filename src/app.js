@@ -1,12 +1,13 @@
 import  express  from "express";
+import cors from 'cors'
 import mongoose from 'mongoose';
 import dbConnect from "./database/databaseConfig.js";
 import clientesController from "./controller/ClientesController.js";
 
 const app = express()
 app.use(express.json())
-// app.use(cors())
-const port = 3000
+app.use(cors())
+const port = process.env.PORT || 3001
 
 dbConnect(mongoose)
 clientesController(app)

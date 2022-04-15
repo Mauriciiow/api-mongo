@@ -8,7 +8,7 @@ dotenv.config()
 
 const app = express()
 const port = process.env.PORT || 3000
-const DB_URI = process.env.MONGO_URI
+const DB_URI = process.env.MONGODB_URI
 app.use(express.json())
 app.use(cors())
 

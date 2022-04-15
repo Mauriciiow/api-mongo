@@ -2,7 +2,7 @@
 
 const dbConnect = async (mongoose, heroku)=>{
  
-    await mongoose.connect(heroku ||'mongodb://localhost/clientes', {useNewUrlParser: true, useUnifiedTopology: true}) 
+    await mongoose.connect(heroku || 'mongodb://localhost/clientes', {useNewUrlParser: true, useUnifiedTopology: true}) 
 
     const db = mongoose.connection
     

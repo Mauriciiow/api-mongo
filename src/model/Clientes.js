@@ -2,9 +2,6 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-
-
-
 const clientes = new Schema({
     nome: {type: String, required: [true, 'Informe um nome valido']},
     idade: {type: Number, required:[true, 'Informe uma idade valida']},

@@ -1,5 +1,6 @@
-import dotenv from 'dotenv'
-dotenv.config*
+import dotenv from dotenv
+dotenv.config()
+
 const dbConnect = async (mongoose)=>{
 
     await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/clientes', {useNewUrlParser: true, useUnifiedTopology: true}) 

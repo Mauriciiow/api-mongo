@@ -2,6 +2,11 @@ import Clientes from "../model/Clientes.js";
 
 const clientesController = (app)=>{
 
+    app.get('/', async (req, res)=>{
+        res.send('FUNCIONOU AMEM!')
+
+    })
+
     app.get('/clientes', async (req, res)=>{
 
         try {

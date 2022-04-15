@@ -7,7 +7,7 @@ import clientesController from "./controller/ClientesController.js";
 const app = express()
 app.use(express.json())
 app.use(cors())
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3000
 
 dbConnect(mongoose)
 clientesController(app)

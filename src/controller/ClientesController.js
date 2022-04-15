@@ -1,5 +1,4 @@
 import Clientes from "../model/Clientes.js";
-import mongoose from "mongoose";
 
 const clientesController = (app)=>{
 

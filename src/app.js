@@ -5,9 +5,10 @@ import dbConnect from "./database/databaseConfig.js";
 import clientesController from "./controller/ClientesController.js";
 
 const app = express()
+const port = process.env.PORT || 3000
 app.use(express.json())
 app.use(cors())
-const port = process.env.PORT || 3000
+
 
 dbConnect(mongoose)
 clientesController(app)

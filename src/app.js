@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import dbConnect from "./database/databaseConfig.js";
 import clientesController from "./controller/ClientesController.js";
 
-
 const app = express()
 const port = process.env.PORT || 3000
 

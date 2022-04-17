@@ -30,30 +30,54 @@ const clientesController = (app)=>{
         }
     })
 
+
     app.post('/clientes', async (req, res)=>{
         
         try {
             const body = req.body
-            const clienteNovo = new Clientes({
-                nome: body.nome,
-                idade: body.idade,
-                cpf: body.cpf,
-                email: body.email,
-                senha: body.senha,
-                genero: body.genero,
-                autorizacao: body.autorizacao,
-                
-            })
+            const email = req.body.email
+            const testaEmail = await Clientes.find({email: email})
+    
+            if (testaEmail.length == 0) {
+                const clienteNovo = new Clientes({
+                    nome: body.nome,
+                    idade: body.idade,
+                    cpf: body.cpf,
+                    email: body.email,
+                    senha: body.senha,
+                    genero: body.genero,
+                    autorizacao: body.autorizacao,
+                    
+                })
+                const cliente = await clienteNovo.save()
+                res.status(200).json({"cliente adicionado": cliente })
+            }
 
-            const cliente = await clienteNovo.save()
-            res.status(200).json({"cliente adicionado": cliente })
+            
+           
+           
         } catch (error) {
-            res.status(400).json({"erro": true, 'msg': error.message })
+            res.status(500).json({"erro": true, 'msg': error.message })
         }
     })
     
 
-    app.put('/cliente/:id', async (req, res)=>{
+    app.post('/login/cliente', async (req, res)=>{
+        try {
+            const {email, senha} = req.body
+            const login = await Clientes.findOne({email: email, senha: senha})
+            if (!login) {
+                throw new Error()
+                
+            } 
+            res.status(200).json({'mensagem': 'encontrei', 'cliente': login})
+            
+        } catch (error) {
+            res.status(400).json({"mensagem": error.menssage, "erro": true})
+        }
+    })
+
+    app.patch('/cliente/:id', async (req, res)=>{
         try {
             const id = req.params.id
             const body = req.body

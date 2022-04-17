@@ -3,7 +3,7 @@ import Clientes from "../model/Clientes.js";
 const clientesController = (app)=>{
 
     app.get('/', async (req, res)=>{
-        res.send('FUNCIONOU AMEM!')
+        res.send('Api clientes :)')
 
     })
 

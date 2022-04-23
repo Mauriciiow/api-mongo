@@ -1,15 +1,18 @@
 import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
-
+const msg = `Sua senha deve ter: Tamanho de 8 caracteres
+Somente letras e numeros
+No mínimo uma letra maiúscula e minúscula 
+`
 const clientes = new Schema({
     nome: {type: String, required: [true, 'Informe um nome valido']},
-    idade: {type: Number, required:[true, 'Informe uma idade valida']},
-    cpf: {type: String, required: [true, 'Informe um cpf valido']},
+    data_nascimento: {type: String, default: Date, required:[true, 'Informe uma data valida']},
+    cpf: {type: String, required: [true, 'Informe um cpf valido com 11 digitos']},
     email: {type: String, required: [true, 'Informe um email valido, ex: email@email.com']},
-    senha: {type: String, required: [true, 'Informe uma senha valida']},
-    genero: {type: String, required: [true, 'Informe seu genero valido']},
-    autorizacao: {type: Boolean, required: [true, 'Informe se possui autorizacao'], set: function (autorizacao) {return this.idade >= 18? autorizacao = true : autorizacao}}
+    senha: {type: String, required: [true, msg]},
+    genero: {type: String, required: [true, 'Informe um genero']},
+  
 },
 {versionKey: false})
 
@@ -30,8 +33,9 @@ clientes.path('email').validate((email)=> {
   
 
 clientes.path('nome').set((nome)=> {
-    return nome.split(' ').map((e, i, arr)=>e.substr(0, 1).toUpperCase()+e.substr(1, e.length)).join(' ')
+    return nome.split(' ').map(e=>e.substr(0, 1).toUpperCase()+e.substr(1, e.length)).join(' ')
   });
+
   
   clientes.path('cpf').validate((cpf)=> {
     let cpfRe = /^[0-9]{11}/

@@ -1,7 +1,5 @@
 import 'dotenv/config'
 
-
-
 const dbConnect = async (mongoose)=>{
     const mongo_url = process.env.MONGO_URL
     await mongoose.connect(mongo_url || 'http://localhost:3000/clientes' , {useNewUrlParser: true, useUnifiedTopology: true}) 

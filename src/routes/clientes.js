@@ -57,7 +57,7 @@ import  express  from "express";
            
            
         } catch (error) {
-            res.status(500).json({"erro": true, 'msg': error.message })
+            res.status(422).json({"erro": true, 'msg': error.message })
         }
     })
     

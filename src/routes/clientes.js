@@ -11,7 +11,7 @@ import  express  from "express";
     
         try {
             const clientes = await Clientes.find() 
-
+            
             if (!clientes) {
                 res.status(500)
                 return
